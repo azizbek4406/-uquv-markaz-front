@@ -1,0 +1,76 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+
+  <mat-toolbar class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+
+    <span>O`quv Markaz</span>
+    <span class="example-spacer"></span>
+
+
+    <!-- <a mat-list-item class="example-icon" [routerLink]="['login']">
+      <button mat-icon-button  aria-label="Example icon-button with share icon">
+
+        <mat-icon >open_in_new</mat-icon> 
+        <mat-icon class="mat-40" color="accent">open_in_new</mat-icon>
+
+
+      </button>
+
+    </a> -->
+    <a class="log" [routerLink]="['login']"> <button mat-raised-button >LOG - IN</button> </a>
+
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
+      </mat-nav-list>
+
+      <mat-nav-list dense>
+        <a mat-list-item [routerLink]="['oqituvchi']">
+          <h3>
+            O`qituvchi
+          </h3>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item [routerLink]="['guruh']">
+          <h3>
+            Guruh
+          </h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item [routerLink]="['oquvchi']" (click)="photo()">
+          <h3>
+            O`quvchi
+          </h3>
+        </a>
+        <mat-divider></mat-divider>
+
+      </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="main-content">
+        <router-outlet></router-outlet>
+
+        <div class="img" *ngIf="photo()">
+          <img src="./../assets/photo_2022-03-09_19-37-50.jpg">
+        </div>
+
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+
+
+
+
+
+</div>

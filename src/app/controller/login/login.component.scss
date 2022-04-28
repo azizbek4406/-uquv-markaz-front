@@ -1,0 +1,36 @@
+.container{
+    width: 50%;
+    margin: auto;
+    .header{
+
+      .avatar{
+         margin: 40px 50px 10px 50px;
+         text-align: center;
+         h2{
+             display: inline-block;
+             font-family: cursive;
+             font-weight: 500;
+
+         }
+         img{
+             float: left;
+         }
+      }
+    }
+  }
+
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
+
+ .urta{
+    width: 100%;
+    margin: 100px 100px 50px 100px;
+ }
