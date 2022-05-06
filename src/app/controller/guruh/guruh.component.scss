@@ -188,3 +188,88 @@ mat-form-field{
       bottom: -80px;
       letter-spacing: 2.15em;
     }
+
+    @keyframes ldio-o3cexz7fvmj-o {
+      0% {
+          opacity: 1;
+          transform: translate(0 0)
+      }
+
+      49.99% {
+          opacity: 1;
+          transform: translate(94.80000000000001px, 0)
+      }
+
+      50% {
+          opacity: 0;
+          transform: translate(94.80000000000001px, 0)
+      }
+
+      100% {
+          opacity: 0;
+          transform: translate(0, 0)
+      }
+  }
+
+  @keyframes ldio-o3cexz7fvmj {
+      0% {
+          transform: translate(0, 0)
+      }
+
+      50% {
+          transform: translate(94.80000000000001px, 0)
+      }
+
+      100% {
+          transform: translate(0, 0)
+      }
+  }
+
+  .ldio-o3cexz7fvmj div {
+      position: absolute;
+      width: 94.80000000000001px;
+      height: 94.80000000000001px;
+      border-radius: 50%;
+      top: 71.10000000000001px;
+      left: 23.700000000000003px;
+  }
+
+  .ldio-o3cexz7fvmj div:nth-child(1) {
+      background: #281916;
+      animation: ldio-o3cexz7fvmj 1.0204081632653061s linear infinite;
+      animation-delay: -0.5102040816326531s;
+  }
+
+  .ldio-o3cexz7fvmj div:nth-child(2) {
+      background: #1c3759;
+      animation: ldio-o3cexz7fvmj 1.0204081632653061s linear infinite;
+      animation-delay: 0s;
+  }
+
+  .ldio-o3cexz7fvmj div:nth-child(3) {
+      background: #281916;
+      animation: ldio-o3cexz7fvmj-o 1.0204081632653061s linear infinite;
+      animation-delay: -0.5102040816326531s;
+  }
+
+  .loadingio-spinner-dual-ball-oileugss5i {
+      width: 237px;
+      height: 237px;
+      display: inline-block;
+      overflow: hidden;
+      background: #989ca1;
+  }
+
+  .ldio-o3cexz7fvmj {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform: translateZ(0) scale(1);
+      backface-visibility: hidden;
+      transform-origin: 0 0;
+      /* see note above */
+  }
+
+  .ldio-o3cexz7fvmj div {
+      box-sizing: content-box;
+  }

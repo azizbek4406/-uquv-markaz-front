@@ -35,7 +35,7 @@
                             <mat-form-field appearance="outline">
                                 <mat-label>Telefon nomer</mat-label>
                                 <span matPrefix style="display: inline-block; padding-bottom: 10px;">+998 &nbsp;</span>
-                                <input type="number" matInput formControlName="telNomer" >
+                                <input type="number" matInput formControlName="telNomer">
 
                                 <mat-hint>O`quvchining telefon nomeri</mat-hint>
                             </mat-form-field>
@@ -45,7 +45,7 @@
                                 <input formControlName='kelganKuni' matInput [matDatepicker]="picker">
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
-                              </mat-form-field>
+                            </mat-form-field>
 
                             <mat-form-field appearance="outline">
                                 <mat-label>Kelishilgan summa</mat-label>
@@ -70,14 +70,14 @@
                                   <mat-option value="Erkak">Erkak</mat-option>
                                   <mat-option value="Ayol">Ayol</mat-option>
                                 </mat-select>
-                              </mat-form-field> 
-                              <br>-->
+                              </mat-form-field> -->
+                            
 
-                                  <mat-radio-group aria-label="Jinsni tanlang" formControlName="jins">
-                                <mat-radio-button color="primary" value="Erkak">Erkak</mat-radio-button>
-                                <mat-radio-button color="warn" value="Ayol">Ayol</mat-radio-button>
-                              </mat-radio-group>
-                              
+                            <mat-radio-group aria-label="Jinsni tanlang" formControlName="jins">
+                                <mat-radio-button value="Erkak">Erkak</mat-radio-button>
+                                <mat-radio-button value="Ayol">Ayol</mat-radio-button>
+                            </mat-radio-group>
+
 
 
 
@@ -106,9 +106,12 @@
                             </mat-form-field>
 
                         </p>
-                        <h2 style="background-color: red;color: white;text-align: center;font-family: monospace;padding: 10px 0;" *ngIf="xatolik">Guruhni qaytadan tanlash shart! </h2>
+                        <h2 style="background-color: red;color: white;text-align: center;font-family: monospace;padding: 10px 0;"
+                            *ngIf="xatolik">Guruhni qaytadan tanlash shart! </h2>
                         <mat-action-row>
                             <button mat-raised-button color="primary" type="submit">
+                                <!-- [disabled]="oquvchiForm.invalid || isLoading" -->
+
                                 <mat-icon class="mat-18">add</mat-icon>
                                 Saqlash
                                 <mat-spinner *ngIf="isLoading" style="float: right; top: 8px;left: 5px;" diameter="20">
@@ -116,7 +119,7 @@
 
                             </button>
                             <button type="button" style="margin-left: 10px;" mat-raised-button color="accent"
-                                (click)="tozalash()" >
+                                (click)="tozalash()">
                                 <mat-icon class="mat-18">cancel</mat-icon>
                                 Bekor qilish
                             </button>
@@ -150,11 +153,19 @@
                     <div class="anima2"></div>
                     <div class="anima3"></div>
                   </div> -->
-                  <div class="container">
+                <!-- <div class="container">
                     <div class="ring"></div>
                     <div class="ring"></div>
                     <div class="ring"></div>
-                  </div>
+                </div> -->
+
+                <div class="loadingio-spinner-dual-ball-oileugss5i">
+                    <div class="ldio-o3cexz7fvmj">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
             </div>
 
             <table mat-table [dataSource]="oquvchilar" class="mat-elevation-z8">
@@ -218,12 +229,12 @@
                     <th mat-header-cell *matHeaderCellDef> Tulov </th>
                     <td mat-cell *matCellDef="let oquvchi">
 
-                        <button  [class.tasdiqlandi]="oquvchi.tasdiq"  mat-raised-button type="submit" (click)="tasdiqlash(oquvchi)" >
-                                {{ !oquvchi.tasdiq ? 'Tasdiqlash' : 'Tasdiqlangan' }}
-
+                        <button [class.tasdiqlandi]="oquvchi.tulov" mat-raised-button type="submit"
+                            (click)="tasdiqlash(oquvchi)">
+                            {{ oquvchi.tulov ? 'Tasdiqlangan' : 'Tasdiqlash' }}
                         </button>
-                        <button *ngIf="oquvchi.tulovqil" mat-raised-button color="accent" >Tulov qilish kerak</button>
-                         </td>
+                        <button *ngIf="oquvchi.tulovqil" mat-raised-button color="accent">Tulov qilish kerak</button>
+                    </td>
                 </ng-container>
                 <!-- Symbol Column -->
                 <ng-container matColumnDef="amal">
@@ -246,9 +257,14 @@
 
         </div>
 
-        <mat-paginator [length]="totalElements" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" aria-label="Select page"></mat-paginator>
+        <mat-paginator [length]="totalElements"  [pageSize]="10" [pageSizeOptions]="[10, 20, 50]"
+            aria-label="Select page"> </mat-paginator>
 
 
 
     </mat-card-content>
 </mat-card>
+
+
+
+

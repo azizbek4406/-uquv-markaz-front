@@ -27,6 +27,7 @@ export class OquvchiComponent implements OnInit, AfterViewInit {
   isLoadingResult = false;
   isLoadingReached = false;
   xatolik = false;
+  tulov = false;
 
   DisplayedColumns = ["id", "ism", "familiya", "telNomer", "kelganKuni", "kelishilganSumma", "jins",  "guruh", "info", "tulov", "amal"]
 
@@ -146,7 +147,15 @@ export class OquvchiComponent implements OnInit, AfterViewInit {
 
   tasdiqlash(oquvchi: any) {
     oquvchi.tasdiq = true;
-
+     oquvchi.tulov = true;
+     
+    this.oquvchiService.update(oquvchi).subscribe(data =>{
+    })
+    
+    if(oquvchi.tulov == true){
+      this.tulov = true;
+    }
 
   }
+
 }
