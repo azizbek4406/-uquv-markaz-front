@@ -2,21 +2,24 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/c
 import { Injectable } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { catchError, Observable, throwError } from "rxjs";
+import { JwtUtilService } from "./jwt-util.service";
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor{
-    constructor(private snakBar: MatSnackBar){}
+    constructor(private snakBar: MatSnackBar, private jwtUtil: JwtUtilService){}
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-        return next.handle(req).pipe(
-            catchError(e => {
-                let msg = `Xatolik ro'y berdi`
-                if(e && e.error && e.error.error){
-                    msg = e.error.error;
-                } 
-                this.snakBar.open(msg, 'Ok');
-                return throwError(e);
-        }))
+        let headers = req.headers;
+
+        let token = this.jwtUtil.getToken();
+        if(token)
+          headers = headers.append('Authorization', 'Bearer '+token);
+        req = req.clone({headers});
+
+
+        return next.handle(req);
     }
+
+    
     
 }

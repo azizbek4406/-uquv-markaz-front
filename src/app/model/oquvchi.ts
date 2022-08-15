@@ -8,8 +8,8 @@ export interface Oquvchi {
     kelganKuni: Date;
     kelishilganSumma: number;
     jins: string;
+    tulovTasdiq: boolean;
     guruh: Guruh;
     info: string;
-    tulov: boolean;
 
   }

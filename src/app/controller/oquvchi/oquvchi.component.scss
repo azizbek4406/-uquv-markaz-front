@@ -8,14 +8,14 @@
         z-index: 99;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.336);
+        background-color: rgba(0, 0, 0, 0.493);
         display: flex;
         justify-content: center;
         align-items: center;
     }
     table{
-    width: 100%;
-    border-collapse: collapse;
+      width: 100%;
+      border-collapse: collapse;
     th,td{
         text-align: center;
         border: solid 1px #eee;
@@ -50,23 +50,23 @@ mat-form-field{
     left: 0;
     right: 0;
   }
-  
+
   .example-sidenav {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 400px;
     height: 100%;
-    
+
   }
-  
+
   .example-header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
   }
-  
+
   .example-footer {
     position: fixed;
     bottom: 0;
@@ -83,20 +83,25 @@ mat-form-field{
     background-color: rgb(41, 134, 241);
     color: #eee;
   }
- 
+
+img{
+    height: 50px;
+    margin: 5px 10px;
+}
+
   @keyframes example {
     0%{
       transform: rotate(0deg)
-      
+
     }
-    
+
     100%{
       transform: rotate(360deg)
     }
   }
-  
+
   /* The element to apply the animation to */
-  
+
   .anima2 {
         border: solid 5px cyan;
         border-left: solid 5px black;
@@ -112,9 +117,9 @@ mat-form-field{
         animation-duration: 4s;
         animation-iteration-count: 100;
         float: left;
-        
+
   }
-  
+
   .anima3 {
     border: solid 5px cyan;
     border-left: solid 5px black;
@@ -131,16 +136,16 @@ mat-form-field{
     animation-iteration-count: 100;
     margin-left:200px;
   }
-  
-  
-   
+
+
+
     .barcha{
       width: 100px;
       height: 100px;
       float: left;
       margin-left: 200px;
     }
-  
+
 
     .container{
       position: relative;
@@ -149,7 +154,7 @@ mat-form-field{
       justify-content: center;
       align-items: center;
       margin-top: 100px;
-      
+
     }
     .container .ring{
       position: relative;
@@ -162,8 +167,8 @@ mat-form-field{
       border-top: 4px solid cyan;
       animation: animate 1s linear infinite;
     }
-    
-    
+
+
     @keyframes animate{
       0%{
       transform: rotate(0deg)
@@ -172,7 +177,7 @@ mat-form-field{
       transform: rotate(360deg)
       }
     }
-    
+
     .container .ring.ring::before{
       content: '';
       position: absolute;
@@ -198,7 +203,7 @@ mat-form-field{
       letter-spacing: 2.15em;
     }
 
-  
+
     .mat-radio-button ~ .mat-radio-button {
       margin-left: 16px;
     }
@@ -275,7 +280,8 @@ mat-form-field{
       height: 237px;
       display: inline-block;
       overflow: hidden;
-      
+    background-color: rgba(0, 0, 0, 0);
+
   }
 
   .ldio-o3cexz7fvmj {

@@ -1,0 +1,80 @@
+<mat-accordion displayMode="default" [multi]="true" [hideToggle]="false">
+    <mat-expansion-panel [hideToggle]="false">
+        <mat-expansion-panel-header>Acount Setting</mat-expansion-panel-header>
+        <div>
+            <form [formGroup]="accountForm" (ngSubmit)="save()">
+                <p>
+                    <mat-form-field *ngIf="tahrirRejim" appearance="outline">
+                        <mat-label>ID</mat-label>
+                        <input matInput formControlName="id" readonly>
+
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Login</mat-label>
+                        <input matInput formControlName="login" readonly>
+
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password">
+
+                    </mat-form-field>
+
+                    <mat-action-row>
+                        <button mat-raised-button color="primary" type="submit"
+                            [disabled]="accountForm.invalid || isLoading">
+
+
+                            <mat-icon class="mat-18">add</mat-icon>
+                            Saqlash
+                            <mat-spinner *ngIf="isLoading" style="float: right; top: 8px;left: 5px;" diameter="20">
+                            </mat-spinner>
+
+                        </button>
+                        <button type="button" style="margin-left: 10px;" mat-raised-button color="accent"
+                            (click)="tozalash()">
+                            <mat-icon class="mat-18">cancel</mat-icon>
+                            Bekor qilish
+                        </button>
+                    </mat-action-row><br>
+
+
+
+            </form>
+        </div> <br>
+
+    </mat-expansion-panel>
+</mat-accordion>
+
+
+<div class="table-container">
+    <table mat-table [dataSource]="acc" class="mat-elevation-z8">
+
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let acc"> {{acc.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="login">
+            <th mat-header-cell *matHeaderCellDef> Login </th>
+            <td mat-cell *matCellDef="let acc"> {{acc.login}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="password">
+            <th mat-header-cell *matHeaderCellDef> Password </th>
+            <td mat-cell *matCellDef="let acc"> {{acc.password}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="amal">
+            <th mat-header-cell *matHeaderCellDef> Amal </th>
+            <td mat-cell *matCellDef="let acc"> <button mat-raised-button color="primary" (click)="tahrir(acc)"><mat-icon class="mat-18">edit</mat-icon></button> </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="DisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns:DisplayedColumns;"></tr>
+    </table>
+
+</div>

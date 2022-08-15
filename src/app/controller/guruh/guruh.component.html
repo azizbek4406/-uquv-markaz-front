@@ -32,16 +32,18 @@
                             </mat-form-field>
 
 
-                          <mat-form-field appearance="outline">
-                            <mat-label>Guruh ochilgan sanasi</mat-label>
-                            <input formControlName='sana' matInput [matDatepicker]="picker">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
-                          </mat-form-field>
 
-                            
 
-                               
+                            <mat-form-field appearance="outline">
+                                <mat-label>Guruh ochilgan sanasi</mat-label>
+                                <input formControlName='sana' matInput [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+
+
+
+
 
 
                             <mat-form-field appearance="outline">
@@ -56,6 +58,14 @@
                                 <mat-hint>Guruhga ma`sul o`qituvchini tanlang</mat-hint>
                             </mat-form-field>
 
+                            <!-- <mat-form-field appearance="outline">
+                                <mat-label>Hozir markazda aktiv yoki yo`qligini belgilang</mat-label>
+                                <mat-select formControlName="active">
+                                    <mat-option value="true">Active</mat-option>
+                                    <mat-option value="false">No-active</mat-option>
+                                </mat-select>
+                            </mat-form-field> -->
+
 
 
 
@@ -65,11 +75,13 @@
 
                                 <mat-hint>O`qituvchi info</mat-hint>
                             </mat-form-field>
-                            
+
                         </p>
-                        <h2 style="background-color: red;color: white;text-align: center;font-family: monospace;padding: 10px 0;" *ngIf="xatolik">Ma'sul o`qituvchini qaytadan tanlash shart! </h2>
+                        <h2 style="background-color: red;color: white;text-align: center;font-family: monospace;padding: 10px 0;"
+                            *ngIf="xatolik">Ma'sul o`qituvchini qaytadan tanlash shart! </h2>
                         <mat-action-row>
-                            <button mat-raised-button color="primary" type="submit" [disabled]="guruhForm.invalid || isLoading">
+                            <button mat-raised-button color="primary" type="submit"
+                                [disabled]="guruhForm.invalid || isLoading">
                                 <mat-icon class="mat-18">add</mat-icon>
                                 Saqlash
                                 <mat-spinner *ngIf="isLoading" style="float: right; top: 8px;left: 5px;" diameter="20">
@@ -77,12 +89,12 @@
 
                             </button>
                             <button type="button" style="margin-left: 10px;" mat-raised-button color="accent"
-                                (click)="tozalash()" >
+                                (click)="tozalash()">
                                 <mat-icon class="mat-18">cancel</mat-icon>
                                 Bekor qilish
                             </button>
                         </mat-action-row><br>
-                        
+
 
 
                     </form>
@@ -101,7 +113,7 @@
 
             <mat-hint>Guruh qidiruv</mat-hint>
         </mat-form-field>
- 
+
         <div class="table-container">
             <div class="loading" *ngIf="isLoadingResult">
                 <!-- <mat-spinner diameter="50"></mat-spinner> -->
@@ -110,12 +122,12 @@
                     <div class="anima2"></div>
                     <div class="anima3"></div>
                   </div> -->
-                  <!-- <div class="container">
+                <!-- <div class="container">
                     <div class="ring"></div>
                     <div class="ring"></div>
                     <div class="ring"></div>
                   </div> -->
-                  <div class="loadingio-spinner-dual-ball-oileugss5i">
+                <div class="loadingio-spinner-dual-ball-oileugss5i">
                     <div class="ldio-o3cexz7fvmj">
                         <div></div>
                         <div></div>
@@ -162,10 +174,24 @@
                     <th mat-header-cell *matHeaderCellDef>O`quvchilari soni </th>
                     <td mat-cell *matCellDef="let guruh"> {{guruh.oquvchiSon}} </td>
                 </ng-container>
+
+                <!-- Weight Column
+                <ng-container matColumnDef="active">
+                    <th mat-header-cell *matHeaderCellDef> <mat-checkbox #filt (change)="sortActive(filt)" class="example-margin"></mat-checkbox>&nbsp;
+                        <mat-slide-toggle #slide (change)="activeFilter(slide)"></mat-slide-toggle></th>
+                    <td mat-cell *matCellDef="let guruh">
+                        <button mat-raised-button [color]="guruh.active == true ? 'primary' : 'accent'">
+                            {{ guruh.active == true ? 'Active' : 'No-active'}}
+                        </button>
+
+
+                    </td>
+                </ng-container> -->
+
                 <!-- Symbol Column -->
                 <ng-container matColumnDef="info">
                     <th mat-header-cell *matHeaderCellDef> Info </th>
-                    <td mat-cell *matCellDef="let guruh"> {{guruh.info}} </td>
+                    <td mat-cell *matCellDef="let guruh" style="width: 300px;"> {{guruh.info}} </td>
                 </ng-container>
                 <!-- Symbol Column -->
                 <ng-container matColumnDef="amal">

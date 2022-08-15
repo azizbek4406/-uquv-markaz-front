@@ -1,3 +1,15 @@
+<!-- 
+
+<div style="text-align: center; font-family: cursive;">
+  <br>
+
+  <h2>{{date | date: "fullDate"}}
+    {{date | date: "HH:mm:ss"}}</h2>
+</div><br>
+<div class="img">
+  <img src="./../assets/photo_2022-03-09_19-37-50.jpg">
+</div> -->
+
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
 
   <mat-toolbar class="example-toolbar">
@@ -10,6 +22,11 @@
     <span class="example-spacer"></span>
 
 
+    <span (click)="view()" class="urta" [routerLink]="['']">
+      PARVEZ &nbsp;&nbsp;&nbsp; <span *ngIf="director"
+        style="border: solid 2px black; padding: 0 10px ;">Director</span>
+      <span *ngIf="admin" style="border: solid 2px black; padding: 0 10px ;">Admin</span>
+    </span>
     <!-- <a mat-list-item class="example-icon" [routerLink]="['login']">
       <button mat-icon-button  aria-label="Example icon-button with share icon">
 
@@ -20,7 +37,7 @@
       </button>
 
     </a> -->
-    <a class="log" [routerLink]="['login']"> <button mat-raised-button >LOG - IN</button> </a>
+    <a class="log" [routerLink]="['login']"> <button mat-raised-button>LOG - IN</button> </a>
 
 
   </mat-toolbar>
@@ -28,26 +45,40 @@
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
-      <mat-nav-list>
-      </mat-nav-list>
-
       <mat-nav-list dense>
-        <a mat-list-item [routerLink]="['oqituvchi']">
+        <a *ngIf="validateRole()" (click)="element1()" class="acc1" mat-list-item [routerLink]="['oqituvchi']" >
+          <mat-icon> supervisor_account </mat-icon>
           <h3>
             O`qituvchi
           </h3>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </a>
         <mat-divider></mat-divider>
-        <a mat-list-item [routerLink]="['guruh']">
+        <a *ngIf="validateRole()" (click)="element2()" class="acc2" mat-list-item [routerLink]="['guruh']">
+          <mat-icon> group_add </mat-icon>
           <h3>
             Guruh
           </h3>
         </a>
         <mat-divider></mat-divider>
-        <a mat-list-item [routerLink]="['oquvchi']" (click)="photo()">
+        <a *ngIf="validateRole()" (click)="element3()" class="acc3" mat-list-item [routerLink]="['oquvchi']">
+          <mat-icon> perm_identity </mat-icon>
           <h3>
             O`quvchi
+          </h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a *ngIf="validateRole()" (click)="element4()" class="acc4" mat-list-item [routerLink]="['tulov']">
+          <mat-icon>payment icon</mat-icon>
+          <h3>
+            Tulov
+          </h3>
+        </a>
+        <mat-divider></mat-divider>
+        <a *ngIf="validateRole1()" (click)="element5()" class="acc5" mat-list-item [routerLink]="['account']">
+          <mat-icon> perm_contact_calendar </mat-icon>
+          <h3>
+            Account
           </h3>
         </a>
         <mat-divider></mat-divider>
@@ -60,9 +91,7 @@
       <div class="main-content">
         <router-outlet></router-outlet>
 
-        <div class="img" *ngIf="photo()">
-          <img src="./../assets/photo_2022-03-09_19-37-50.jpg">
-        </div>
+
 
       </div>
     </mat-sidenav-content>

@@ -25,6 +25,7 @@ export class GuruhComponent implements OnInit, AfterViewInit {
   isLoadingResult = false;
   isLoadingReached = false;
   xatolik = false;
+  access = false;
   DisplayedColumns = ["id", "nom", "darsVaqti", "sana", "oqituvchi","oquvchiSon","info", "amal"]
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -90,7 +91,7 @@ export class GuruhComponent implements OnInit, AfterViewInit {
     this.dialog.open(ConfirmDialogComponent, {
       data: {
         title: "O`chirish",
-        msg: "Siz rostdan ham ushbu Guruhni o`chirmoqchimisiz?"
+        msg: "Siz rostdan ham ushbu Guruhni o`chirmoqchimisiz? O'chirishdan oldin guruhdagi hamma o`quvchilar o`chirilganligiga qarang!"
       }
     }).afterClosed().subscribe(data => {
       if (data) {
@@ -99,9 +100,6 @@ export class GuruhComponent implements OnInit, AfterViewInit {
         })
       }
     });
-
-    // if(confirm(`Siz rostdan ham o'chirmoqchimisiz?`))
-
   }
   save() {
     this.isLoading = true;
@@ -122,6 +120,25 @@ export class GuruhComponent implements OnInit, AfterViewInit {
     }
 
   }
+
+
+  // sortActive(filt: any) {
+  //   this.access = filt._checked  
+  //   this.activeFilter()
+  // }
+
+  // activeFilter(slide?: any) {
+  //   if (this.access) {
+  //     if (slide) {
+  //       this.guruhService.getAllByActive(slide._checked).subscribe(data => {
+  //         this.guruhlar = data.content
+  //       })
+  //     }
+  //   } else {
+  //     this.loadAll('')
+  //   }
+  // } 
+
   tahrir(guruh: Guruh) {
     this.tahrirRejim = true;
     this.guruhForm.reset(guruh);
@@ -138,6 +155,8 @@ export class GuruhComponent implements OnInit, AfterViewInit {
 
   
 }
+
+
 
 
 

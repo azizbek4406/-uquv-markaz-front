@@ -1,0 +1,114 @@
+<mat-card-content>
+    <br><br>
+    <div>
+        <span class="number">Tulovlar: {{answerNum}}</span>
+
+        <button (click)="refresh()" style="float: right; margin: 0px;" mat-stroked-button color="primary">Refresh
+            <mat-icon>
+                refresh
+            </mat-icon>
+        </button>
+    </div>
+    <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Clearable input</mat-label>
+        <input #intput matInput type="text" (input)="loadAll(intput.value)">
+    </mat-form-field>
+
+    <div class="table-container">
+        <div style="display: flex; justify-content: center; align-items: center; margin: 10px;" *ngIf="isLoding">
+            <div class="loadingio-spinner-spinner-hd046bupud">
+                <div class="ldio-nlb8hdub5pc">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+
+        <table *ngIf="!isLoding" mat-table class="mat-elevation-z8" [dataSource]="tulovlar" matSort matSortDisableClear
+            matSortDirection="desc" matSort #sort="matSort">
+
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> Id </th>
+                <td mat-cell *matCellDef="let tulov"> {{tulov.id}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="oquvchi">
+                <th mat-header-cell *matHeaderCellDef> O`quvchi </th>
+                <td mat-cell *matCellDef="let tulov">{{tulov.oquvchi?.id}} -:- {{tulov.oquvchi?.ism}}
+                    {{tulov.oquvchi?.familiya}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="summa">
+                <th mat-header-cell *matHeaderCellDef> Summa</th>
+                <td mat-cell *matCellDef="let tulov">{{tulov.summa}}</td>
+            </ng-container>
+
+
+
+
+            <ng-container matColumnDef="tulovKuni">
+                <th mat-header-cell *matHeaderCellDef> Tulov Kuni</th>
+                <td mat-cell *matCellDef="let tulov"> {{tulov.tulovKuni}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="oy">
+                <th mat-header-cell *matHeaderCellDef> Tulangan oy</th>
+                <td mat-cell *matCellDef="let tulov"> {{tulov.oy}}</td>
+            </ng-container>
+            <ng-container matColumnDef="yil">
+                <th mat-header-cell *matHeaderCellDef> Tulangan yil</th>
+                <td mat-cell *matCellDef="let tulov"> {{tulov.yil}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="tulovTasdiq">
+                <th mat-header-cell *matHeaderCellDef> Tasdiqlash</th>
+                <td mat-cell *matCellDef="let tulov">
+                    <button (click)="tasdiqlash(tulov)" *ngIf="validateRole()" mat-raised-button [color]="tulov.tulovTasdiq == true ? '' : 'primary'">
+                        {{ tulov.tulovTasdiq == true ? 'Tasdiqlandi' : 'Tasdiqlash'}}
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+
+    <mat-paginator [length]="answerNum" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" aria-label="Select page">
+    </mat-paginator>
+
+</mat-card-content>

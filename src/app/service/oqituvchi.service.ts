@@ -16,6 +16,9 @@ export class OqituvchiService {
   getAll(params: any): Observable<Page<Oqituvchi>>{
     return this.http.get<Page<Oqituvchi>>(this.api, {params: params})
   }
+  // getAllByActive(value: any): Observable<Page<Oqituvchi>>  {
+  //   return this.http.get<Page<Oqituvchi>>(this.api + "/active/" + value)
+  // }
   create(oqituvchi: Oqituvchi): Observable<any>{
     return this.http.post<Oqituvchi>(this.api, oqituvchi);
   }

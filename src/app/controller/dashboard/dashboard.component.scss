@@ -1,0 +1,16 @@
+
+.img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    img {
+      width: 85%;
+      border: 5px dotted royalblue;
+      box-sizing: border-box;
+      box-shadow: 1px 1px 20px 8px;
+  
+    }
+  }
+  

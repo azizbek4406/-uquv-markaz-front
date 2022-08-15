@@ -17,10 +17,22 @@ export class OquvchiService {
   getAll(params: any): Observable<Page<Oquvchi>>{
     return this.http.get<Page<Oquvchi>>(this.api, {params: params})
   }
-  create(oquvchi: Oquvchi): Observable<any>{
+
+  // getAllByActive(value: any): Observable<Page<Oquvchi>>  {
+  //   return this.http.get<Page<Oquvchi>>(this.api + "/active/" + value)
+  // }
+  
+  getAllByGuruxId(id: any): Observable<Page<Oquvchi>> {
+    return this.http.get<Page<Oquvchi>>(this.api + "/gr/" + id)
+  } 
+
+  updateMoney(): Observable<Oquvchi> {
+    return this.http.get<Oquvchi>(this.api + "/update");
+  }
+  create(oquvchi: Oquvchi): Observable<Oquvchi>{
     return this.http.post<Oquvchi>(this.api, oquvchi);
   }
-  update(oquvchi: Oquvchi): Observable<any>{
+  update(oquvchi: Oquvchi): Observable<Oquvchi>{
     return this.http.put<Oquvchi>(this.api, oquvchi);
   }
   deleteByid(oquvchiId: number): Observable<any>{

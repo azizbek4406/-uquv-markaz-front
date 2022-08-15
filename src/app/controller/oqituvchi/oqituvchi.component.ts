@@ -3,9 +3,13 @@ import { Oqituvchi } from 'src/app/model/oqituvchi';
 import { OqituvchiService } from 'src/app/service/oqituvchi.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog.component';
+import { ConfirmDialogComponent, GuruhForTechDialogComponent } from 'src/app/shared/confirm-dialog.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatAccordion } from '@angular/material/expansion';
+import { MatSort, Sort } from '@angular/material/sort';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { Oquvchi } from 'src/app/model/oquvchi';
+import { GuruhService } from 'src/app/service/guruh.service';
 
 @Component({
   selector: 'app-oqituvchi',
@@ -14,16 +18,20 @@ import { MatAccordion } from '@angular/material/expansion';
 })
 export class OqituvchiComponent implements OnInit, AfterViewInit {
   oqituvchilar!: Oqituvchi[];
+  oqituvchilar1!: Oqituvchi[];
   oqituvchiForm: any;
   tahrirRejim = false;
   showFiller = false;
   isLoading = false;
   isLoadingResult = false;
+  xatolik = false;
   isLoadingReached = false;
+  access = false;
   DisplayedColumns = ["id", "ism", "familiya", "fan", "info", "amal"];
 
   @ViewChild(MatAccordion) accordion!: MatAccordion;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
   totalElements = 0;
 
 
@@ -31,6 +39,7 @@ export class OqituvchiComponent implements OnInit, AfterViewInit {
     private oqituvchiService: OqituvchiService,
     private fb: FormBuilder,
     private dialog: MatDialog) { }
+    
   ngAfterViewInit(): void {
     this.paginator.page.subscribe(() => this.loadAll(''))
     this.loadAll('');
@@ -107,17 +116,48 @@ export class OqituvchiComponent implements OnInit, AfterViewInit {
     }
 
   }
+
+
+  // sortActive(filt: any) {
+  //   this.access = filt._checked  
+  //   this.activeFilter()
+  // }
+
+  // activeFilter(slide?: any) {
+  //   if (this.access) {
+  //     if (slide) {
+  //       this.oqituvchiService.getAllByActive(slide._checked).subscribe(data => {
+  //         this.oqituvchilar = data.content
+  //       })
+  //     }
+  //   } else {
+  //     this.loadAll('')
+  //   }
+  // } 
+
   tahrir(oqituvchi: Oqituvchi) {
     this.tahrirRejim = true;
     this.oqituvchiForm.reset(oqituvchi);
     this.accordion.openAll();
+    this.xatolik = true;
   }
   tozalash() {
     this.oqituvchiForm.reset();
     this.tahrirRejim = false;
     this.isLoading = false;
     this.accordion.closeAll();
+  }  
+
+  openDialog(oqituvchi: Oqituvchi) {
+    
+    this.dialog.open(GuruhForTechDialogComponent, {
+      width: "1000px",
+      data: {
+        oqituvchi: oqituvchi
+      }
+    })
   }
+
 
 
 

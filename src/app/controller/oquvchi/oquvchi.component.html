@@ -60,18 +60,12 @@
 
 
                                 <mat-hint>oquvchining dars vaqti</mat-hint>
-                            </mat-form-field> -->
-
-
-
-                            <!-- <mat-form-field appearance="outline">
-                                <mat-label>Jinsni tanlang</mat-label>
-                                <mat-select formControlName="jins">
-                                  <mat-option value="Erkak">Erkak</mat-option>
-                                  <mat-option value="Ayol">Ayol</mat-option>
-                                </mat-select>
-                              </mat-form-field> -->
-                            
+                            </mat-form-field> --> 
+ 
+                            <br>
+                                <img width=""  [src]="fayl ?? 'assets/no_photo.png'" alt="">
+                                <input style="display: none;" #inpFile type="file" accept="image/apng, image/avif, image/gif, image/jpeg, image/png, image/svg+xml, image/webp" (change)="selectFile($event)" />
+                                <button mat-raised-button color="warn" type="button" (click)="inpFile.click()">Rasm tanglang</button>
 
                             <mat-radio-group aria-label="Jinsni tanlang" formControlName="jins">
                                 <mat-radio-button value="Erkak">Erkak</mat-radio-button>
@@ -86,10 +80,11 @@
 
                             <mat-form-field appearance="outline">
                                 <mat-label>Guruh</mat-label>
-                                <mat-select formControlName="guruh" placeholder="Guruhni tanlang">
+                                <mat-select formControlName="guruh"  placeholder="Guruhni tanlang">
                                     <mat-option [value]="guruh.id" *ngFor="let guruh of guruhlar">
                                         {{guruh.nom}}
                                     </mat-option>
+                                   
                                 </mat-select>
 
                                 <mat-hint>O`quvchiga ma`sul o`qituvchini tanlang</mat-hint>
@@ -109,8 +104,8 @@
                         <h2 style="background-color: red;color: white;text-align: center;font-family: monospace;padding: 10px 0;"
                             *ngIf="xatolik">Guruhni qaytadan tanlash shart! </h2>
                         <mat-action-row>
-                            <button mat-raised-button color="primary" type="submit">
-                                <!-- [disabled]="oquvchiForm.invalid || isLoading" -->
+                            <button mat-raised-button color="primary" type="submit" [disabled]="oquvchiForm.invalid || isLoading">
+                                
 
                                 <mat-icon class="mat-18">add</mat-icon>
                                 Saqlash
@@ -176,9 +171,12 @@
                 <!-- Position Column -->
                 <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef> ID </th>
-                    <td mat-cell *matCellDef="let oquvchi"> {{oquvchi.id}} </td>
-                </ng-container>
-
+                    <td mat-cell *matCellDef="let oquvchi"> 
+                    <button mat-raised-button [color]="oquvchi.tulovVaqtKeldi == true ? '' : 'accent'">
+                        {{oquvchi.id}}
+                      </button>
+                     </td>  
+                  </ng-container>
                 <!-- Name Column -->
                 <ng-container matColumnDef="ism">
                     <th mat-header-cell *matHeaderCellDef> Ism </th>
@@ -192,7 +190,7 @@
                 </ng-container>
                 <!-- Weight Column -->
                 <ng-container matColumnDef="telNomer">
-                    <th mat-header-cell *matHeaderCellDef> Telefon nomer</th>
+                    <th mat-header-cell *matHeaderCellDef> Tel nomer</th>
                     <td mat-cell *matCellDef="let oquvchi"> {{oquvchi.telNomer}} </td>
                 </ng-container>
                 <!-- Weight Column -->
@@ -201,15 +199,31 @@
                     <td mat-cell *matCellDef="let oquvchi"> {{oquvchi.kelganKuni}} </td>
                 </ng-container>
                 <!-- Weight Column -->
-                <ng-container matColumnDef="kelishilganSumma">
-                    <th mat-header-cell *matHeaderCellDef> Kelishilgan summa</th>
-                    <td mat-cell *matCellDef="let oquvchi"> {{oquvchi.kelishilganSumma}} </td>
-                </ng-container>
+              <ng-container matColumnDef="kelishilganSumma">
+                <th mat-header-cell *matHeaderCellDef> Summa</th>
+                <td mat-cell *matCellDef="let oquvchi">
+                  {{oquvchi.kelishilganSumma}}
+                  <!-- <button *ngIf="!oquvchi.tulovTasdiq"  mat-raised-button color="accent">
+                    Tulov qilinmagan
+                  </button> -->
+
+                </td>
+              </ng-container>
 
                 <!-- Weight Column -->
                 <ng-container matColumnDef="jins">
                     <th mat-header-cell *matHeaderCellDef> Jins</th>
                     <td mat-cell *matCellDef="let oquvchi"> {{oquvchi.jins}} </td>
+                </ng-container>
+               
+                <!-- Weight Column -->
+                <ng-container matColumnDef="rasm">
+                    <th mat-header-cell *matHeaderCellDef> Rasm </th>
+                    <td mat-cell *matCellDef="let oquvchi"> 
+                        <button style="border: none;" (click)="openFullImage(oquvchi.fayl)">
+                            <img [src]="getUrl(oquvchi.fayl)" alt="">
+                        </button>
+                    </td>
                 </ng-container>
 
 
@@ -221,7 +235,7 @@
                 <!-- Symbol Column -->
                 <ng-container matColumnDef="info">
                     <th mat-header-cell *matHeaderCellDef> Info </th>
-                    <td mat-cell *matCellDef="let oquvchi"> {{oquvchi.info}} </td>
+                    <td mat-cell *matCellDef="let oquvchi" style="width: 300px;"> {{oquvchi.info}} </td>
                 </ng-container>
 
                 <!-- Symbol Column -->
@@ -229,11 +243,11 @@
                     <th mat-header-cell *matHeaderCellDef> Tulov </th>
                     <td mat-cell *matCellDef="let oquvchi">
 
-                        <button [class.tasdiqlandi]="oquvchi.tulov" mat-raised-button type="submit"
+                        <button mat-raised-button type="submit"
                             (click)="tasdiqlash(oquvchi)">
-                            {{ oquvchi.tulov ? 'Tasdiqlangan' : 'Tasdiqlash' }}
+                            Tulov qilish
                         </button>
-                        <button *ngIf="oquvchi.tulovqil" mat-raised-button color="accent">Tulov qilish kerak</button>
+                        <!-- <button *ngIf="oquvchi.tulovqil" mat-raised-button color="accent">Tulov qilish kerak</button> -->
                     </td>
                 </ng-container>
                 <!-- Symbol Column -->
@@ -260,8 +274,9 @@
         <mat-paginator [length]="totalElements"  [pageSize]="10" [pageSizeOptions]="[10, 20, 50]"
             aria-label="Select page"> </mat-paginator>
 
-
-
+          
+        <button (click)="updateMoney()" *ngIf="validateRole()" mat-raised-button style="float: right; margin-top: 30px; margin-bottom: 30px;" color="primary">Tulov yangilash</button>
+      
     </mat-card-content>
 </mat-card>
 

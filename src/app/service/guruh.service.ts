@@ -16,6 +16,12 @@ export class GuruhService {
   getAll(params: any): Observable<Page<Guruh>>{
     return this.http.get<Page<Guruh>>(this.api, {params: params})
   }
+  // getAllByActive(value: any): Observable<Page<Guruh>>  {
+  //   return this.http.get<Page<Guruh>>(this.api + "/active/" + value)
+  // }
+  getAllByOqituvchiId(id: any) {
+    return this.http.get<Page<Guruh>>(this.api + "/tech/" + id)
+  }
   create(guruh: Guruh): Observable<any>{
     return this.http.post<Guruh>(this.api, guruh);
   }

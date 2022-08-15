@@ -1,275 +1,285 @@
-.table-container{
-    max-height: 400px;
-    overflow: auto;
-    height: 400px;
-    position: relative;
-    .loading{
-        position: absolute;
-        z-index: 99;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.336);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    table{
+.table-container {
+  max-height: 400px;
+  overflow: auto;
+  height: 400px;
+  position: relative;
+
+  .loading {
+    position: absolute;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.493);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  table {
     width: 100%;
     border-collapse: collapse;
-    th,td{
-        text-align: center;
-        border: solid 1px #eee;
+
+    th,
+    td {
+      text-align: center;
+      border: solid 1px #eee;
     }
-}
+  }
 }
 
-input{
-    padding: -5px;
+input {
+  padding: -5px;
 }
-th{
+
+th {
   background-color: royalblue;
   color: #eee;
   font-size: 15px;
   font-family: cursive;
 }
 
-mat-form-field{
-    margin: 20px;
-    mat-label{
-     padding: 0 10px;
-   }
+mat-form-field {
+  margin: 20px;
+
+  mat-label {
+    padding: 0 10px;
+  }
 }
 
-.search{
-    width: 30%;
+.search {
+  width: 30%;
 }
+
 .example-container {
-    position: absolute;
-    top: 60px;
-    bottom: 60px;
-    left: 0;
-    right: 0;
-  }
-  
-  .example-sidenav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 400px;
-    height: 100%;
-    
-  }
-  
-  .example-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .example-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
+  position: absolute;
+  top: 60px;
+  bottom: 60px;
+  left: 0;
+  right: 0;
+}
 
-  @keyframes example {
-    0%{
-      transform: rotate(0deg)
-      
-    }
-    
-    100%{
-      transform: rotate(360deg)
-    }
-  }
-  
-  /* The element to apply the animation to */
-  
-  .anima2 {
-        border: solid 5px cyan;
-        border-left: solid 5px black;
-        border-right:solid 5px black;
-        border-bottom:solid 5px cyan;
-        box-shadow: 1px 1px 1px 1px  #1111;
-        height: 200px;
-        width: 200px;
-        margin-top: 10%;
-        margin-left: 50%;
-        border-radius: 300px;
-        animation-name: example;
-        animation-duration: 4s;
-        animation-iteration-count: 100;
-        float: left;
-        
-  }
-  
-  .anima3 {
-    border: solid 5px cyan;
-    border-left: solid 5px black;
-    border-right: solid 5px black;
-    border-bottom: solid 5px cyan;
-    box-shadow: 1px 1px 1px 1px #1111;
-    height: 200px;
-    width: 200px;
-    margin-top: 10%;
-    margin-left: 36%;
-    border-radius: 300px;
-    animation-name: example;
-    animation-duration: 4s;
-    animation-iteration-count: 100;
-    margin-left:200px;
-  }
-  
-  
-  
-    .barcha{
-      width: 100px;
-      height: 100px;
-      float: left;
-      margin-left: 200px;
-    }
-  
+.example-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 100%;
 
-    
-    .container{
-      position: relative;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 100px;
-      
-    }
-    .container .ring{
-      position: relative;
-      width: 150px;
-      height: 150px;
-      margin: -30px;
-      border: 4px solid #fff;
-      border-radius: 50%;
-      border: 4px solid transparent;
-      border-top: 4px solid cyan;
-      animation: animate 1s linear infinite;
-    }
-    
-    
-    @keyframes animate{
-      0%{
-      transform: rotate(0deg)
-      }
-      100%{
-      transform: rotate(360deg)
-      }
-    }
-    
-    .container .ring.ring::before{
-      content: '';
-      position: absolute;
-      width: 15px;
-      height: 15px;
-      background: cyan;
-      top: 12px;
-      right: 12px;
-      border-radius: 50%;
-      box-shadow: 0 0 0 2px #368B8F,
-      0 0 0 2px #3C6A6C,
-      0 0 0 6px #415051;
-    }
-    .container .ring:nth-child(3){
-      position: absolute;
-      top: -66.66px;
-    }
-    .container p{
-      color: white;
-      font-size: 1.5em;
-      font-family: consolas;
-      bottom: -80px;
-      letter-spacing: 2.15em;
-    }
+}
 
-    @keyframes ldio-o3cexz7fvmj-o {
-      0% {
-          opacity: 1;
-          transform: translate(0 0)
-      }
+.example-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
 
-      49.99% {
-          opacity: 1;
-          transform: translate(94.80000000000001px, 0)
-      }
+.example-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
-      50% {
-          opacity: 0;
-          transform: translate(94.80000000000001px, 0)
-      }
-
-      100% {
-          opacity: 0;
-          transform: translate(0, 0)
-      }
+@keyframes example {
+  0% {
+    transform: rotate(0deg)
   }
 
-  @keyframes ldio-o3cexz7fvmj {
-      0% {
-          transform: translate(0, 0)
-      }
+  100% {
+    transform: rotate(360deg)
+  }
+}
 
-      50% {
-          transform: translate(94.80000000000001px, 0)
-      }
+/* The element to apply the animation to */
 
-      100% {
-          transform: translate(0, 0)
-      }
+.anima2 {
+  border: solid 5px cyan;
+  border-left: solid 5px black;
+  border-right: solid 5px black;
+  border-bottom: solid 5px cyan;
+  box-shadow: 1px 1px 1px 1px #1111;
+  height: 200px;
+  width: 200px;
+  margin-top: 10%;
+  margin-left: 50%;
+  border-radius: 300px;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: 100;
+  float: left;
+
+}
+
+.anima3 {
+  border: solid 5px cyan;
+  border-left: solid 5px black;
+  border-right: solid 5px black;
+  border-bottom: solid 5px cyan;
+  box-shadow: 1px 1px 1px 1px #1111;
+  height: 200px;
+  width: 200px;
+  margin-top: 10%;
+  margin-left: 36%;
+  border-radius: 300px;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: 100;
+  margin-left: 200px;
+}
+
+
+
+.barcha {
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin-left: 200px;
+}
+
+
+
+.container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+
+}
+
+.container .ring {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: -30px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  border: 4px solid transparent;
+  border-top: 4px solid cyan;
+  animation: animate 1s linear infinite;
+}
+
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg)
   }
 
-  .ldio-o3cexz7fvmj div {
-      position: absolute;
-      width: 94.80000000000001px;
-      height: 94.80000000000001px;
-      border-radius: 50%;
-      top: 71.10000000000001px;
-      left: 23.700000000000003px;
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+.container .ring.ring::before {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: cyan;
+  top: 12px;
+  right: 12px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px #368B8F,
+    0 0 0 2px #3C6A6C,
+    0 0 0 6px #415051;
+}
+
+.container .ring:nth-child(3) {
+  position: absolute;
+  top: -66.66px;
+}
+
+.container p {
+  color: white;
+  font-size: 1.5em;
+  font-family: consolas;
+  bottom: -80px;
+  letter-spacing: 2.15em;
+}
+
+@keyframes ldio-o3cexz7fvmj-o {
+  0% {
+    opacity: 1;
+    transform: translate(0 0)
   }
 
-  .ldio-o3cexz7fvmj div:nth-child(1) {
-      background: #281916;
-      animation: ldio-o3cexz7fvmj 1.0204081632653061s linear infinite;
-      animation-delay: -0.5102040816326531s;
+  49.99% {
+    opacity: 1;
+    transform: translate(94.80000000000001px, 0)
   }
 
-  .ldio-o3cexz7fvmj div:nth-child(2) {
-      background: #1c3759;
-      animation: ldio-o3cexz7fvmj 1.0204081632653061s linear infinite;
-      animation-delay: 0s;
+  50% {
+    opacity: 0;
+    transform: translate(94.80000000000001px, 0)
   }
 
-  .ldio-o3cexz7fvmj div:nth-child(3) {
-      background: #281916;
-      animation: ldio-o3cexz7fvmj-o 1.0204081632653061s linear infinite;
-      animation-delay: -0.5102040816326531s;
+  100% {
+    opacity: 0;
+    transform: translate(0, 0)
+  }
+}
+
+@keyframes ldio-o3cexz7fvmj {
+  0% {
+    transform: translate(0, 0)
   }
 
-  .loadingio-spinner-dual-ball-oileugss5i {
-      width: 237px;
-      height: 237px;
-      display: inline-block;
-      overflow: hidden;
-      background: #989ca1;
+  50% {
+    transform: translate(94.80000000000001px, 0)
   }
 
-  .ldio-o3cexz7fvmj {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      transform: translateZ(0) scale(1);
-      backface-visibility: hidden;
-      transform-origin: 0 0;
-      /* see note above */
+  100% {
+    transform: translate(0, 0)
   }
+}
 
-  .ldio-o3cexz7fvmj div {
-      box-sizing: content-box;
-  }
+.ldio-o3cexz7fvmj div {
+  position: absolute;
+  width: 94.80000000000001px;
+  height: 94.80000000000001px;
+  border-radius: 50%;
+  top: 71.10000000000001px;
+  left: 23.700000000000003px;
+}
+
+.ldio-o3cexz7fvmj div:nth-child(1) {
+  background: #281916;
+  animation: ldio-o3cexz7fvmj 1.0204081632653061s linear infinite;
+  animation-delay: -0.5102040816326531s;
+}
+
+.ldio-o3cexz7fvmj div:nth-child(2) {
+  background: #1c3759;
+  animation: ldio-o3cexz7fvmj 1.0204081632653061s linear infinite;
+  animation-delay: 0s;
+}
+
+.ldio-o3cexz7fvmj div:nth-child(3) {
+  background: #281916;
+  animation: ldio-o3cexz7fvmj-o 1.0204081632653061s linear infinite;
+  animation-delay: -0.5102040816326531s;
+}
+
+.loadingio-spinner-dual-ball-oileugss5i {
+  width: 237px;
+  height: 237px;
+  display: inline-block;
+  overflow: hidden;
+  background: #989ca100;
+}
+
+.ldio-o3cexz7fvmj {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0;
+  /* see note above */
+}
+
+.ldio-o3cexz7fvmj div {
+  box-sizing: content-box;
+}
